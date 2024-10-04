@@ -25,6 +25,65 @@ curl -O https://example.com/add_hex_dependency.zsh
 chmod +x add_hex_dependency.zsh
 ```
 
+### Copy to Home Directory or Oh-My-Zsh Setup
+
+To make the script available anywhere in your terminal, you can copy it to your home directory or an Oh-My-Zsh custom scripts directory and add it to your `$PATH`.
+
+#### Option 1: Copy to Home Directory
+
+Copy the script to your home directory and add it to your `$PATH`:
+
+```sh
+mv add_hex_dependency.zsh ~/add-mix-dep
+chmod +x ~/add-mix-dep
+```
+
+Add the following line to your `~/.zshrc` file to include it in your `$PATH`:
+
+```sh
+export PATH="$HOME:$PATH"
+```
+
+Reload your `~/.zshrc` file:
+
+```sh
+source ~/.zshrc
+```
+
+Now you can run the script from anywhere as:
+
+```sh
+add-mix-dep <package_name>
+```
+
+#### Option 2: Oh-My-Zsh Custom Scripts Directory
+
+If you use Oh-My-Zsh, you can copy the script to the custom plugins directory:
+
+```sh
+mkdir -p ~/.oh-my-zsh/custom/plugins/add-mix-dep
+mv add_hex_dependency.zsh ~/.oh-my-zsh/custom/plugins/add-mix-dep/add-mix-dep
+chmod +x ~/.oh-my-zsh/custom/plugins/add-mix-dep/add-mix-dep
+```
+
+Add the following alias to your `~/.zshrc` file:
+
+```sh
+alias add-mix-dep="~/.oh-my-zsh/custom/plugins/add-mix-dep/add-mix-dep"
+```
+
+Reload your `~/.zshrc` file:
+
+```sh
+source ~/.zshrc
+```
+
+Now you can run the script from anywhere as:
+
+```sh
+add-mix-dep <package_name>
+```
+
 ## Usage
 
 Run the script with the package name to add a new dependency to your project:
@@ -76,3 +135,4 @@ James Carr (james.r.carr+github@gmail.com)
 ## Disclaimer
 
 This script directly modifies your `mix.exs` file. Please ensure you have a backup or use version control to track changes before running the script.
+
